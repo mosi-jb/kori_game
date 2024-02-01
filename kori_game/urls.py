@@ -21,6 +21,8 @@ from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 from django.conf import settings
 
+from kori_game.views import home
+
 doc_patterns = [
     # YOUR PATTERNS
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
@@ -31,6 +33,7 @@ doc_patterns = [
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
+                  path('', home, name='home_page'),
                   path('', include('games.urls')),
               ] + doc_patterns
 
