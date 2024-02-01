@@ -35,6 +35,7 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', home, name='home_page'),
                   path('', include('games.urls')),
+                  path("__debug__/", include("debug_toolbar.urls")),
               ] + doc_patterns
 
 if settings.DEBUG:

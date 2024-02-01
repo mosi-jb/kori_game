@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'user',
     'rest_framework',
     'drf_spectacular',
+    "debug_toolbar",
     'games',
 ]
 
@@ -50,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'kori_game.urls'
@@ -132,4 +134,8 @@ MEDIA_URL = 'medias/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'reactapp/build/static')
+]
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
