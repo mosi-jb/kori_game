@@ -1,7 +1,8 @@
 from rest_framework import viewsets
 
 from games.models import Game, Category
-from games.serializers import GameSerializer, CategorySerializer
+from games.serializer2 import CategorySerializer
+from games.serializers import GameSerializer
 
 
 # Create your views here.

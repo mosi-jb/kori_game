@@ -3,15 +3,15 @@ from rest_framework import serializers
 from games.models import Game, Category
 
 
-class GameSerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Game
+        model = Category
         fields = '__all__'
 
 
-class CategorySerializer(serializers.ModelSerializer):
-    games = GameSerializer(read_only=True, many=True)
+class GameSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(read_only=True, many=True)
 
     class Meta:
-        model = Category
+        model = Game
         fields = '__all__'
