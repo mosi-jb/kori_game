@@ -20,8 +20,17 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, SpectacularRedocView
 from django.conf import settings
-
 from kori_game.views import home
+
+admin_urls = [
+    path('admin/Game/',
+         include(('Game.urls.admin', 'kori_game.Game'), namespace='Game-admin')),
+]
+
+front_urls = [
+    path('front/Game/',
+         include(('Game.urls.front', 'kori_game.Game'), namespace='Game-front')),
+]
 
 doc_patterns = [
     # YOUR PATTERNS
@@ -32,11 +41,11 @@ doc_patterns = [
 ]
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
+                  path('akm/', admin.site.urls),
                   path('', home, name='home_page'),
-                  path('', include('games.urls')),
+                  path('', include('user.urls')),
                   path("__debug__/", include("debug_toolbar.urls")),
-              ] + doc_patterns
+              ] + doc_patterns + admin_urls + front_urls
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

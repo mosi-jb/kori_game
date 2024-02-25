@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from games.models import Category, Game
+from Game.models import Category, Game
 
 # Register your models here.
 

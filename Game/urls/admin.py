@@ -1,6 +1,6 @@
 from rest_framework.routers import SimpleRouter
 
-from games.views import GameViewSet, CategoryViewSet
+from Game.views.admin import GameViewSet, CategoryViewSet
 
 router = SimpleRouter()
 router.register('game', GameViewSet, basename='Game')

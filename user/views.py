@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework.authtoken.views import ObtainAuthToken
 
-# Create your views here.
+from user.serializer import AdminLoginSerializer
+
+
+class AdminLoginView(ObtainAuthToken):
+    serializer_class = AdminLoginSerializer

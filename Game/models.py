@@ -6,7 +6,6 @@ from django.db import models
 
 class Category(models.Model):
     title = models.CharField(max_length=225, db_index=True)
-    image = models.ImageField(upload_to='images/category')
 
     def __str__(self):
         return self.title
@@ -18,9 +17,9 @@ class Category(models.Model):
 
 class Game(models.Model):
     title = models.CharField(max_length=225, db_index=True)
-    image = models.ImageField(upload_to='images/game')
-    category = models.ManyToManyField(Category, related_name='games')
-    story = models.TextField()
+    image = models.ImageField(upload_to='images/game', null=True, blank=True)
+    category = models.ManyToManyField(Category, related_name='games', blank=True)
+    story = models.TextField(null=True, blank=True)
     game_play = models.CharField(max_length=48, null=True, blank=True)
     slug = models.SlugField(unique=True, allow_unicode=True)
 
